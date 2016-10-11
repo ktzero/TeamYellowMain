@@ -1,0 +1,10 @@
+com\tiy\ssa\exerciseWebApp\service\IUserinfoService.class
+com\tiy\ssa\exerciseWebApp\entity\Exercise.class
+com\tiy\ssa\exerciseWebApp\dao\IUserinfoDAO.class
+com\tiy\ssa\exerciseWebApp\application\Application.class
+com\tiy\ssa\exerciseWebApp\config\DbConfiguration.class
+com\tiy\ssa\exerciseWebApp\entity\Userinfo.class
+com\tiy\ssa\exerciseWebApp\controller\ExerciseController.class
+com\tiy\ssa\exerciseWebApp\dao\UserinfoDAO.class
+com\tiy\ssa\exerciseWebApp\service\UserinfoService.class
+com\tiy\ssa\exerciseWebApp\config\MvcConfiguration.class
