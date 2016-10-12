@@ -1,0 +1,7 @@
+create table userinfo 
+(id int not null auto_increment, 
+firstname varchar(30) not null, 
+lastname varchar(30) not null, 
+username varchar(15) not null,
+password varchar(8) not null, 
+PRIMARY KEY(id));

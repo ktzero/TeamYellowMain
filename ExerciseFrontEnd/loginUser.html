@@ -1,0 +1,22 @@
+
+<div ng-controller="loginCtrl"> 
+<div >
+  <h1 align="center">Login Page</h1>
+<form name="myForm" ng-submit="loginUser()">
+
+<br>
+
+UserID:<input name="UserId" ng-model="userId"  type="text" required  >
+
+Password:<input name="PassWord" ng-model="passWord"  type="password" required >
+
+ <input type="submit" value="Submit"> 
+ 
+ <div><span ng-show="loginFlag">{{loginResult}}</span></div>
+	
+</form>
+</div>
+</div>
+
+
+
