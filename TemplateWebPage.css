@@ -1,3 +1,26 @@
+#header{
+	background-image: url(Banner.png);
+	margin: 0;
+	text-align: center;
+	padding: 20px;
+	background-color: #555555;
+	color: white;
+	font-size: 500%;
+	height: 215px;
+}
+
+body {
+    background-image: url("http://p181820.webspaceconfig.de/images/background_neutral.jpg");
+    background-color: #5555555;
+}
+	
+#sidebar {
+    position:absolute;
+    top:0; bottom:0; right:0;
+    width:50px;
+    background:#555555;
+}
+
 div.class{
 	margin: 0;
 	text-align: center;
@@ -39,6 +62,7 @@ div.class{
     font-size: 36px;
     margin-left: 50px;
 }
+
 
 #main {
     transition: margin-left .5s;
