@@ -28,7 +28,7 @@ public class DbConfiguration {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/tiy2?autoReconnect=true&useSSL=false");
         dataSource.setUsername("root");
-        dataSource.setPassword("qwert");
+        dataSource.setPassword("admin");
         return dataSource;
     }
 
