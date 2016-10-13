@@ -27,7 +27,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tiy.ssa.exerciseWebApp.entity.Exercise;
+import com.tiy.ssa.exerciseWebApp.entity.Exercise_Category;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
+import com.tiy.ssa.exerciseWebApp.service.IExerciseService;
+import com.tiy.ssa.exerciseWebApp.service.IExercise_CategoryService;
 import com.tiy.ssa.exerciseWebApp.service.IUserinfoService;
 
 @Controller
@@ -36,7 +40,13 @@ import com.tiy.ssa.exerciseWebApp.service.IUserinfoService;
 public class ExerciseController {
 
 		@Autowired
-		private IUserinfoService exerciseService;
+		private IUserinfoService userinfoService;
+		
+		@Autowired
+		private IExerciseService exerciseService;
+		
+		@Autowired
+		private IExercise_CategoryService exercise_CategoryService;
 		
 		@Autowired
 		private Environment env;
@@ -46,7 +56,7 @@ public class ExerciseController {
 	    @CrossOrigin
 	    public String addUser(@PathVariable("fname") String fname, @PathVariable("lname") String lname,@PathVariable("username") String username,@PathVariable("pwd") String pwd) {
 	    	Userinfo user = new Userinfo(fname,lname,username,pwd);
-	        exerciseService.addUser(user);
+	        userinfoService.addUser(user);
 	        String response = " User "+fname + " "+lname +" account created successfully";
 	    //    return user;
 	        return response;
@@ -56,10 +66,10 @@ public class ExerciseController {
 	    @ResponseBody
 	    @CrossOrigin
 	    public String getUser(@PathVariable("username") String username,@PathVariable("pwd") String pwd) {
-	    	Userinfo user =  exerciseService.getUserByUsername(username);
+	    	Userinfo user =  userinfoService.getUserByUsername(username);
 	    	String response = " ";
 	    	if(user.getUsername().equals(username) && user.getPassword().equals(pwd)){
-	    		 response = "User "+user.getFirstname() + " "+user.getLastname() +" logged in successfully";
+	    		 response = "User !! "+user.getFirstname() + "  "+user.getLastname() +" !! logged in successfully";
 	    	}else{
 //	    		System.out.println("First name = "+user.getFirstname());
 //	    		System.out.println("Username = "+user.getUsername());
@@ -69,5 +79,26 @@ public class ExerciseController {
 	    		
 	        return response;
 	    }
-		    
+		
+	    
+	    @RequestMapping(value="/exercise/{exCat}", method = RequestMethod.POST)
+	    @ResponseBody
+	    @CrossOrigin
+	    public ResponseEntity<List<Exercise>> getExerciseList(@PathVariable("exCat") String exCat) {
+	    	int cat_id;
+	    	cat_id = exercise_CategoryService.getExerciseCategoryByDesc(exCat);
+	    	List<Exercise> exercise = exerciseService.getExerciseListByCategory(cat_id);
+	        return new ResponseEntity<List<Exercise>>(exercise, HttpStatus.OK);
+	    }
+	    
+	    @RequestMapping(value="/exerciseCategories", method = RequestMethod.POST)
+	    @ResponseBody
+	    @CrossOrigin
+	    public ResponseEntity<List<Exercise_Category>> getCategoriesList() {
+//	      	System.err.println("Inside cat list");
+	    	List<Exercise_Category> exerciseCat = exercise_CategoryService.getAllExerciseCategory();
+//	    	System.err.println("Cat is  = "+exerciseCat.get(0).getDescription());
+	        return new ResponseEntity<List<Exercise_Category>>(exerciseCat, HttpStatus.OK);
+	    }
+	    
 	}
