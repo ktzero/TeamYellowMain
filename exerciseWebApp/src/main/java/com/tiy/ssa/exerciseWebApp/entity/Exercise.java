@@ -21,7 +21,7 @@ public class Exercise implements Serializable {
 	    @Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		@Column(name="id")
-		int id;
+		Integer id;
 		
 		@Column(name="exercise_name")
 		String exercise_name;
@@ -29,27 +29,41 @@ public class Exercise implements Serializable {
 		@Column(name="exercise_desc")
 		String exercise_desc;
 		
-//		@ManyToOne
-//		@JoinColumn(name="id")
-//		private Exercise_Category category;
-		
 		@Column(name="category_id")
 		Integer category_id;
+		
+		@Column(name="intensity")
+		Integer intensity;
 		
 		@Column(name="url")
 		String url;
 		
+		
 		public Exercise() {
 		}
 		
-		
-	
-		public Exercise(String exercise_name, String exercise_desc, Integer category_id, String url) {
+
+		public Exercise(String exercise_name, String exercise_desc, Integer category_id, Integer intensity,
+				String url) {
 			super();
 			this.exercise_name = exercise_name;
 			this.exercise_desc = exercise_desc;
 			this.category_id = category_id;
+			this.intensity = intensity;
 			this.url = url;
+		}
+
+
+
+
+
+		public Integer getIntensity() {
+			return intensity;
+		}
+
+
+		public void setIntensity(Integer intensity) {
+			this.intensity = intensity;
 		}
 
 

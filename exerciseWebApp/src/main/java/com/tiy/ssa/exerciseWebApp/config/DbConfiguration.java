@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.tiy.ssa.exerciseWebApp.entity.Exercise;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise_Category;
+import com.tiy.ssa.exerciseWebApp.entity.Exercise_Tracking;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
 
 
@@ -39,6 +40,7 @@ public class DbConfiguration {
         return new LocalSessionFactoryBuilder(getDataSource()).addAnnotatedClasses(Userinfo.class)
         		.addAnnotatedClass(Exercise.class)
         		.addAnnotatedClass(Exercise_Category.class)
+        		.addAnnotatedClass(Exercise_Tracking.class)
                 .buildSessionFactory();
     }
 
