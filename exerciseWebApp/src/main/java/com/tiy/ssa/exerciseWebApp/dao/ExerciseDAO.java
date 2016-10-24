@@ -21,6 +21,8 @@ public class ExerciseDAO implements IExerciseDAO{
 		List<Exercise> exercises = (List<Exercise>)hibernateTemplate.find(" FROM Exercise WHERE exercise_name = ?", exName);
 		return exercises.get(0);
 	}
+	
+	
 
 	@Override
 	public List<Exercise> getExerciseListByCategory(Integer category_id) {
@@ -29,4 +31,19 @@ public class ExerciseDAO implements IExerciseDAO{
 		return exercises;
 	}
 
+	@Override
+	public List<Exercise> getExerciseListByIntensity(Integer intensity) {
+		List<Exercise> exercises =  (List<Exercise>)hibernateTemplate.find(" FROM Exercise WHERE intensity = ?", intensity);
+		return exercises;
+	}
+
+
+
+	@Override
+	public Exercise getExerciseById(Integer id) {
+		List<Exercise> exercises = (List<Exercise>)hibernateTemplate.find(" FROM Exercise WHERE id = ?", id);
+		return exercises.get(0);
+	}
+
+	
 }

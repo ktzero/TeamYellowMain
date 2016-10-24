@@ -1,0 +1,76 @@
+<div ng-controller="foodTrackerCtrl as ctrl" style="width:100%"> 
+
+<div>
+  <h1 align="center">Food Tracking</h1>
+ </div>
+	<div style="float:left; width:30%">
+		<input 	ng-model="ctrl.id" 
+				class="form-control" 
+				type="text" 
+				placeholder="Filter food by name">
+		
+		<p />
+		
+		<ul><input type="radio" checked="checked" name="food" ng-model="selectedMeal" value=""> ALL FOODS</ul>
+		<ul ng-repeat="cat in foodcategorylist">
+			<input id="catfilter" type="radio" name="food" ng-model="$parent.selectedMeal" value="{{cat.id}}"> {{cat.client_id}}
+		</ul>
+		<p />
+		
+		<button class="btn btn-default" ng-click="showSelected()"> 
+			Update Food Calculator</button>
+		<button class="btn btn-default" ng-click="addFoodDay()"> 
+			Save my progress!</button>
+		
+		<p />
+		<table class="table table-bordered table-hover">
+			<thead>
+					<tr>
+					  <th>Food Selected</th>
+					  <th>Calories</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="picked in selected">
+					<tr>
+						<td ng-bind="picked.description"></td>
+						<td>{{picked.calories}}</td>
+					</tr>
+				</tbody>
+				<tbody>
+					<tr>
+						<td >Total</td>
+						<td>{{total}}</td>
+					</tr>
+				</tbody>
+		</table>
+	</div>
+	
+	<div style="float:left, width:10%">
+	</div>
+	
+	<div style="float:right; width:60%">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+					  <th></th>
+					  <th>Description</th>
+					  <th>Calories</th>
+					  <th>Protein</th>
+					  <th>Fat</th>
+					  <th>Carbs</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="list in fullfoodlist | filter:{client_id: selectedMeal} | filter:{description: ctrl.id}">
+					<tr>
+						<td> <input type="checkbox" ng-model="list.selected" name="selectedMeals[]" value="{{list.id}}"> </td>
+						<td ng-bind="list.description"></td>
+						<td>{{list.calories}}</td>
+						<td>{{list.protein}}</td>
+						<td>{{list.fat}}</td>
+						<td>{{list.carbs}}</td>
+					</tr>
+				</tbody>
+			</table>
+	
+	</div>
+</div>

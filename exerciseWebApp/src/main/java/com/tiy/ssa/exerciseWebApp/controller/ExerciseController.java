@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +32,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tiy.ssa.exerciseWebApp.entity.Exercise;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise_Category;
+import com.tiy.ssa.exerciseWebApp.entity.Exercise_Tracking;
+import com.tiy.ssa.exerciseWebApp.entity.Exercise_Tracking_Data;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
+import com.tiy.ssa.exerciseWebApp.entity.WeeklyProgress;
 import com.tiy.ssa.exerciseWebApp.service.IExerciseService;
 import com.tiy.ssa.exerciseWebApp.service.IExercise_CategoryService;
+import com.tiy.ssa.exerciseWebApp.service.IExercise_TrackingService;
 import com.tiy.ssa.exerciseWebApp.service.IUserinfoService;
 
 @Controller
@@ -47,6 +54,9 @@ public class ExerciseController {
 		
 		@Autowired
 		private IExercise_CategoryService exercise_CategoryService;
+		
+		@Autowired
+		private IExercise_TrackingService exrcise_TrackingService;
 		
 		@Autowired
 		private Environment env;
@@ -80,7 +90,7 @@ public class ExerciseController {
 	        return response;
 	    }
 		
-	    
+// Get workouts for given category 	    
 	    @RequestMapping(value="/exercise/{exCat}", method = RequestMethod.POST)
 	    @ResponseBody
 	    @CrossOrigin
@@ -90,7 +100,8 @@ public class ExerciseController {
 	    	List<Exercise> exercise = exerciseService.getExerciseListByCategory(cat_id);
 	        return new ResponseEntity<List<Exercise>>(exercise, HttpStatus.OK);
 	    }
-	    
+	
+// Get all the muscle groups/categories 
 	    @RequestMapping(value="/exerciseCategories", method = RequestMethod.POST)
 	    @ResponseBody
 	    @CrossOrigin
@@ -100,5 +111,15 @@ public class ExerciseController {
 //	    	System.err.println("Cat is  = "+exerciseCat.get(0).getDescription());
 	        return new ResponseEntity<List<Exercise_Category>>(exerciseCat, HttpStatus.OK);
 	    }
+	    
+ // Get all exercises from a category using an exercise name in that category 	    
+    @RequestMapping(value="/exercisesList/{exName}", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public ResponseEntity<List<Exercise>> getExerciseListUsingCat(@PathVariable("exName") String exName) {
+    	Exercise exercise = exerciseService.getExerciseByName(exName);
+    	List<Exercise> exercises = exerciseService.getExerciseListByCategory(exercise.getCategory_id());
+        return new ResponseEntity<List<Exercise>>(exercises, HttpStatus.OK);
+    } 
 	    
 	}

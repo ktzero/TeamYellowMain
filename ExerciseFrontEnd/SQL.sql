@@ -12,61 +12,36 @@ create table client(
 	
 insert into client(id, first_name, last_name,UserID, password) values('Karen','Reiter', karen123, yellow);
 
+create table userinfo 
+(id int not null auto_increment, 
+firstname varchar(30) not null, 
+lastname varchar(30) not null, 
+username varchar(15) not null,
+password varchar(8) not null, 
+PRIMARY KEY(id));
 
-create table tracking (
+drop table exercise_tracking;
+
+delete from exercise_tracking;
+
+create table exercise_tracking (
 	
 	id int primary key auto_increment,	
-	client_id int,
+	user_id varchar(30),
+	dayNo varchar(25),
 	exercise_id int,
-	food_id int,
 	numberOfSets int not null,
 	numberOfReps int,
-	amountOfTime int,
+	timeInMins int,
 	todays_date date,
-	
-	foreign key (client_id)
-	  references client(id)
-	);
-
-
-insert tracking (id, exerciseID, numberOfSets, numberOfReps, start, client_id) values();
-
-
-create table food(
-	id int primary key,
-	description varchar(50) not null,
-	calories int,
-	protein int,
-	carbs int,
-	client_id int,
-	foreign key (client_id)
-	  references client(id)
-);
-insert into food(id,description,calories, protein, carbs, client_id) values(1,'food',100,100,1);
-
-
-create table execrise_client_relationship(
-	id int primary key auto_increment,
-	exercise_id int not null,
-	client_id int not null,
+	complete boolean,
 	foreign key (exercise_id)
-	  references exercise(id),
-	foreign key (client_id)
-	  references client(id)
+	  references exercise(id)
+		  
 	);
-INSERT exercise_client_relationship (exercise_id, client_id) VALUES(10,10); 
- 
 
-create table food_client_relationship(
-	id int primary key auto_increment,
-	food_id int not null,
-	client_id int not null,
-	foreign key (food_id)
-	  references food(id),
-	foreign key (client_id)
-	  references client(id)
-	);
-INSERT food_client_relationship (food_id, client_id) VALUES(1,11);
+
+insert tracking (user_id,dayNo, exerciseID, numberOfSets, numberOfReps, timeInMins, todays_date) values();
 
 
 
@@ -93,16 +68,29 @@ create table exercise (
 	exercise_name varchar(50) not null,
 	exercise_desc varchar(200) not null,
 	category_id int,
+	intensity int,
 	url varchar(500),
 	foreign key (category_id)
 	references exercise_category(id)
 
 	);
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('BenchPress',"Works chest muscle",1,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('InclinePress',"Works chest muscle",1,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('DeclinePress',"Works chest muscle",1,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('PushUps',"Works chest muscle",1,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('Dips',"Works chest muscle",1,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('BenchPress',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('InclinePress',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=DbFgADa2PL8");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('DeclinePress',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=LfyQBUKR8SE");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PushUps',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=Eh00_rniF8E");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Dips',"Works chest muscle",1,1,"https://www.youtube.com/watch?v=wjUmnZH528Y");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PullOver',"Works chest muscle",1,1,"https://www.youtube.com/watch?v=tpLnfSQJ0gg");
 
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('PullUps',"Works Back muscle",2,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,url) values('WideGripPullDown',"Works Back muscle",2,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PullUps',"Works Back muscle",2,3,"https://www.youtube.com/watch?v=Ir8IrbYcM8w");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('WideGripPullDown',"Works Back muscle",2,3,"https://www.youtube.com/watch?v=Ad_WOMtfyc4");
+
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Squats',"Works Back muscle",3,3,"");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Lunges',"Works Back muscle",3,3,"");
+
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('BarbellCurl',"Works Back muscle",4,3,"");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PressDown',"Works Back muscle",4,3,"");
+
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Planks',"Works Back muscle",5,3,"");
+insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Crunches',"Works Back muscle",5,3,"");
+
+

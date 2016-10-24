@@ -1,0 +1,188 @@
+
+<div ng-controller="routineCtrl"> 
+<div >
+  <h1 align="center">Workout Routine </h1>
+
+<br>
+ 
+ <table id="workoutRoutine" class="w3-table-all " align="center" >
+  <tr  align="right-side">
+	<th id="week">Week/Day</th>
+    <th id="day1">Day 1</th>
+    <th id="day2">Day 2</th>
+	<th id="day3">Day 3</th>
+    <th id="day4">Day 4</th>
+	<th id="day5">Day 5</th>
+  </tr>
+ 
+ 
+<tr id="rows" class="w3-hover-blue"  >
+<td >Week 1</td>
+	<td><ul ng-repeat="x in records | filter: {'dayNo' : 'WeekOneDayOne' }">
+  <li >
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+ </ul>
+ <a   ng-click="getExVal('WeekOneDayOne')" ng-show="dailyFlag[0]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+</td>
+	
+<td><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekOneDayTwo' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekOneDayTwo')" ng-show="dailyFlag[1]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+</td>
+<td><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekOneDayThree' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekOneDayThree')" ng-show="dailyFlag[2]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekOneDayFour' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekOneDayFour')" ng-show="dailyFlag[3]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekOneDayFive' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekOneDayFive')" ng-show="dailyFlag[4]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+</tr>
+
+
+<tr id="rows" class="w3-hover-blue"  >
+<td>Week 2</td>
+	<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekTwoDayOne' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul><a  ng-click="getExVal('WeekTwoDayOne')" ng-show="dailyFlag[5]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+	
+<td><ul>
+ <li ng-repeat="x in records | filter: {'dayNo' : 'WeekTwoDayTwo' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+ </li>
+</ul>
+<a  ng-click="getExVal('WeekTwoDayTwo')" ng-show="dailyFlag[6]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekTwoDayThree' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekTwoDayThree')" ng-show="dailyFlag[7]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekTwoDayFour' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekTwoDayFour')" ng-show="dailyFlag[8]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekTwoDayFive' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekTwoDayFive')" ng-show="dailyFlag[9]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+</tr>
+
+<tr id="rows" class="w3-hover-blue"  >
+<td>Week 3</td>
+	<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekThreeDayOne' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekThreeDayOne')" ng-show="dailyFlag[10]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+	
+		<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekThreeDayTwo' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekThreeDayTwo')" ng-show="dailyFlag[11]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekThreeDayThree' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekThreeDayThree')" ng-show="dailyFlag[12]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekThreeDayFour' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekThreeDayFour')" ng-show="dailyFlag[13]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekThreeDayFive' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekThreeDayFive')" ng-show="dailyFlag[14]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+</tr>
+
+
+<tr id="rows" class="w3-hover-blue"  >
+<td>Week 4</td>
+	<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekFourDayOne' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekFourDayOne')" ng-show="dailyFlag[15]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+	
+		<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekFourDayTwo' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekFourDayTwo')" ng-show="dailyFlag[16]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekFourDayThree' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekFourDayThree')" ng-show="dailyFlag[17]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+			<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekFourDayFour' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekFourDayFour')" ng-show="dailyFlag[18]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+<td  ><ul>
+  <li ng-repeat="x in records | filter: {'dayNo' : 'WeekFourDayFive' }">
+    <output type="text"  ng-bind="x.ex_name + ' ' + x.numberOfSets + ' X ' + x.numberOfReps ">
+  </li>
+</ul>
+<a  ng-click="getExVal('WeekFourDayFive')" ng-show="dailyFlag[19]" href="#/trackThisDay/"  class="w3-btn w3-blue w3-padding-4" role="button">Track It</a>
+	</td>
+</tr>
+
+ <a href="#/weeklyProgress/" class="w3-btn w3-blue w3-padding-8" role="button">Weekly Progress</a>
+
+</table>
+
+</div>
+</div>
+
+
+

@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.tiy.ssa.exerciseWebApp.entity.Exercise;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise_Category;
+import com.tiy.ssa.exerciseWebApp.entity.Exercise_Tracking;
+import com.tiy.ssa.exerciseWebApp.entity.Food;
+import com.tiy.ssa.exerciseWebApp.entity.Food_Category;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
 
 
@@ -30,7 +33,7 @@ public class DbConfiguration {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/tiy2?autoReconnect=true&useSSL=false");
         dataSource.setUsername("root");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("qwert");
         return dataSource;
     }
 
@@ -39,6 +42,9 @@ public class DbConfiguration {
         return new LocalSessionFactoryBuilder(getDataSource()).addAnnotatedClasses(Userinfo.class)
         		.addAnnotatedClass(Exercise.class)
         		.addAnnotatedClass(Exercise_Category.class)
+        		.addAnnotatedClass(Exercise_Tracking.class)
+        		.addAnnotatedClass(Food.class)
+        		.addAnnotatedClass(Food_Category.class)
                 .buildSessionFactory();
     }
 

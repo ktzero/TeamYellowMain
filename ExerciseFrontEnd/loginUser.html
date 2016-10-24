@@ -3,18 +3,30 @@
 <div >
   <h1 align="center">Login Page</h1>
 <form name="myForm" ng-submit="loginUser()">
-
+<table  class="w3-table  " align="center">	
 <br>
-
-UserID:<input name="UserId" ng-model="userId"  type="text" required  >
-
-Password:<input name="PassWord" ng-model="passWord"  type="password" required >
-
+<tr>
+<td>
+UserID <td><input name="UserId" ng-model="userId"  type="text" required  >
+<br>
+<tr>
+<td>
+Password <td><input name="PassWord" ng-model="passWord"  type="password" required >
+<tr>
+<td><td>
+<br><br>
  <input type="submit" value="Submit"> 
  
- <div><span ng-show="loginFlag">{{loginResult}}</span></div>
+ </table>
+ 
+ <div align="center"><span ng-show="loginFlag">{{loginResult}}</span></div>
+
 	
 </form>
+	<br>
+ <a href="#/survey/" ng-show="loginSuccess && !surveyDone" class="btn btn-info" role="button">Survey Page</a>
+ <a href="#/exerciseTracking/" ng-show="loginSuccess && surveyDone" class="btn btn-info" role="button">Routine Page</a>
+ 
 </div>
 </div>
 

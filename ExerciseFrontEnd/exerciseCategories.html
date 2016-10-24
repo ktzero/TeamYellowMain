@@ -1,0 +1,10 @@
+<div ng-controller="catCtrl"> 
+
+  <h1 align="center">Muscle Group Categories</h1>
+
+  <div>
+    <ul ng-repeat="cat in records" ng-click="setActiveCat(cat.description)">
+     <li><a href="#/exercise/" >{{cat.description}}</a></li>
+    </ul>
+</div>
+</div>

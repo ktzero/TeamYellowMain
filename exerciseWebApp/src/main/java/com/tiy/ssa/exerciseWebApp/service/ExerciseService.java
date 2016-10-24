@@ -24,4 +24,14 @@ public class ExerciseService implements IExerciseService{
 		return exerciseDAO.getExerciseListByCategory(category_id);
 	}
 
+	@Override
+	public List<Exercise> getExerciseListByIntensity(Integer intensity) {
+		return exerciseDAO.getExerciseListByIntensity(intensity);
+	}
+
+	@Override
+	public Exercise getExerciseById(Integer id) {
+		return exerciseDAO.getExerciseById(id);
+	}
+
 }

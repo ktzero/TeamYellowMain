@@ -9,8 +9,8 @@
 <td><span ng-show="myForm.FName.$touched && myForm.FName.$invalid">First Name is Required</span></td>	
 <tr class="success"><td>Last Name:</td><td> <input name="LName" ng-model="lname"  required my-directive type="text" ></td>
 <td><span ng-show="myForm.LName.$touched && myForm.LName.$invalid">Last Name is Required</span></td>
-<tr class="success"><td>UserID:</td><td><input name="UserId" ng-model="userId"  type="text" required  ></td>
-<td><span ng-show="myForm.studSat.$touched && myForm.studSat.$invalid">UserID is invalid, please enter a valid userid</span></td>
+<tr class="success"><td>UserID:</td><td><input name="userId" ng-model="UserId"  type="text"  required ></td>
+<td><span ng-show="myForm.userId.$touched && myForm.userId.$invalid">UserID is invalid, please enter a valid userid</span></td>
 <tr class="success"><td>Password:</td><td><input name="PassWord" ng-model="passWord"  type="text" required ></td>
 <td><span ng-show="myForm.PassWord.$touched && myForm.PassWord.$invalid">Password is invalid, please enter a valid Password</span></td>	 
 <tr class="success"><td>Confirm Password:</td><td><input name="ConPwd" ng-model="conPwd"   type="text"  ></td>
