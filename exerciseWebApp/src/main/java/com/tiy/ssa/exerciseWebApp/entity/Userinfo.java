@@ -1,6 +1,8 @@
 package com.tiy.ssa.exerciseWebApp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +33,45 @@ public class Userinfo implements Serializable {
 		@Column(name="password")
 		String password;
 		
+		@Column(name="start_date")
+		Date start_date;
+		
+		@Column(name="routine_created")
+		Boolean routine_created;
+		
+		@Column(name="caloriesPerDay")
+		Integer caloriesPerDay;
+		
+
+
+		public Date getStart_date() {
+			return start_date;
+		}
+
+
+		public Boolean getRoutine_created() {
+			return routine_created;
+		}
+
+
+		public Integer getCaloriesPerDay() {
+			return caloriesPerDay;
+		}
+
+
+		public void setStart_date(Date start_date) {
+			this.start_date = start_date;
+		}
+
+
+		public void setRoutine_created(Boolean routine_created) {
+			this.routine_created = routine_created;
+		}
+
+
+		public void setCaloriesPerDay(Integer caloriesPerDay) {
+			this.caloriesPerDay = caloriesPerDay;
+		}
 
 
 		public int getId() {

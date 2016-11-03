@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="AppMod">
+<head>
+	<meta charset="UTF-8">
+	<title>Opportunity Fitness Member Survey</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+
+	<script src="index.js" type="text/javascript"></script>
+	<style type="text/css">
+		form {
+			margin:10px auto;width:50%;border:1px solid silver;padding:10px;
+		}
+		.uname.ng-valid, .pword.ng-valid {
+			background-color:lightgreen;
+		}
+		.uname.ng-invalid, .pword.ng-invalid {
+			background-color:lightpink;
+		}
+		.uname.ng-pristine, .pword.ng-pristine {
+			background-color:lightyellow;
+		}
+		input.ng-dirty.ng-invalid {
+  			color: red
+		}
+	</style>
+</head>
+
+
+<body ng-controller="AppCtrl as ctrl">
+	<form name="myForm" ng-submit="ctrl.submit()">
+	<h1>Survey</h1>
+
+<div class="form-group">
+
+	<label for="memberHeight">Height:</label>
+
+	<input class="form-control memberHeight" type="text" id="memberHeight" name="memberHeight" ng-model="ctrl.user.memberHeight" required placeholder="Height"/>
+
+	<span ng-show="myForm.uname.$error.required">This field is required</span>
+	 
+	<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+</div>
+
+<div class="form-group">
+	<label for="memberWeight">Weight:</label>
+
+	<input class="form-control memberWeight" type="number" id="memberWeight" name="memberWeight" ng-model="ctrl.user.memberWeight" required  placeholder="Weight"/>
+
+	<span ng-show="myForm.uname.$error.required">This field is required</span>
+	 
+	<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+</div>
+
+
+<div class="form-group">
+	<label for="memberAge">Age:</label>
+
+	<input class="form-control memberAge" type="number" id="memberAge" name="memberAge" ng-model="ctrl.user.memberAge" required  placeholder="Age"/>
+
+	<span ng-show="myForm.uname.$error.required">This field is required</span>
+	 
+	<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+
+</div>
+
+<div class="form-group">
+
+<label for="gender">Gender:</label>
+
+               <select name="gender">
+                  <option value="genderEmpty"></option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+
+                </select>
+
+<label for="goal"> Goal:</label>
+
+               <select name="goal" selected="intensity">
+                  <option value="goalEmpty"></option>
+                  <option value=1>New to working out</option>
+                  <option value=2>Familiar with working out</option>
+                  <option value=3>Expert</option>
+                  
+
+                </select>
+				
+			Enter start date for this program:
+			<input type="text" b-datepicker ng-model="date" />
+			<button type="button" class="btn" data-toggle="datepicker"> <i class="icon-calendar"></i>
+			</button>
+</div>
+
+<div class="form-group">
+
+<label>Comments:</label>
+
+<input class="form-control goal" type="text" id="goal" name="goal"  placeholder="Optional" />
+		
+</div>
+
+<button type="submit" class="btn btn-default" ng-click="getRoutine(intensity)">Submit</button>
+</form>
+</body>

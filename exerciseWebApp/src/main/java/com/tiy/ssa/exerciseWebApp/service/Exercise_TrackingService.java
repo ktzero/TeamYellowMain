@@ -41,5 +41,10 @@ public class Exercise_TrackingService implements IExercise_TrackingService {
 		
 	}
 	
+	public boolean deleteOneWorkout(String userid,String dayno,Integer exid){
+		return exercise_trackingDAO.deleteOneWorkout(userid, dayno, exid);
+		
+	}
+	
 
 }

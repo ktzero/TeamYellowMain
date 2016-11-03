@@ -11,11 +11,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.tiy.ssa.exerciseWebApp.entity.Date_Map;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise_Category;
 import com.tiy.ssa.exerciseWebApp.entity.Exercise_Tracking;
 import com.tiy.ssa.exerciseWebApp.entity.Food;
 import com.tiy.ssa.exerciseWebApp.entity.Food_Category;
+import com.tiy.ssa.exerciseWebApp.entity.Food_Tracking;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
 
 
@@ -31,9 +33,9 @@ public class DbConfiguration {
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/tiy2?autoReconnect=true&useSSL=false");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/teamyellow?autoReconnect=true&useSSL=false");
         dataSource.setUsername("root");
-        dataSource.setPassword("qwert");
+        dataSource.setPassword("admin");
         return dataSource;
     }
 
@@ -45,6 +47,8 @@ public class DbConfiguration {
         		.addAnnotatedClass(Exercise_Tracking.class)
         		.addAnnotatedClass(Food.class)
         		.addAnnotatedClass(Food_Category.class)
+        		.addAnnotatedClass(Food_Tracking.class)
+        		.addAnnotatedClass(Date_Map.class)
                 .buildSessionFactory();
     }
 

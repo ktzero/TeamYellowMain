@@ -24,7 +24,6 @@ public class Exercise_TrackingDAO implements IExercise_TrackingDAO {
 
 	@Override
 	public boolean updateWorkoutRoutine(Exercise_Tracking ex_track) {
-		//hibernateTemplate.save(ex_track);
 		hibernateTemplate.update(ex_track);
 		return true;
 	}
@@ -45,6 +44,17 @@ public class Exercise_TrackingDAO implements IExercise_TrackingDAO {
 	public boolean deleteWorkoutRoutine(String userid) {
 		int count = hibernateTemplate.bulkUpdate("delete from Exercise_Tracking where user_id = ?", userid);
 		boolean response ;
+		if (count > 0 ) response = true;
+		else response = false;
+		return response;
+	}
+	
+	@Override
+	public boolean deleteOneWorkout(String userid,String dayno,Integer exid) {
+		int count = hibernateTemplate.bulkUpdate("delete from Exercise_Tracking where user_id = ? and dayNo = ? and exercise_id = ? ", userid, dayno, exid);
+		boolean response ;
+		System.out.println("COunt ="+count);
+		System.err.println("COunt ="+count);
 		if (count > 0 ) response = true;
 		else response = false;
 		return response;

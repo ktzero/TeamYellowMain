@@ -26,13 +26,39 @@ public class Exercise_Category implements Serializable {
 		@Column(name="description")
 		String description;
 		
+		@Column(name="url")
+		String url;
+		
+		@Column(name="explanation")
+		String explanation;
+		
 //		@OneToMany(mappedBy="category")
 //		private Set<Exercise> exercise;
 
-		public Exercise_Category(String description) {
-			this.description = description;
+		public String getUrl() {
+			return url;
 		}
-		
+
+		public String getExplanation() {
+			return explanation;
+		}
+
+		public void setUrl(String url) {
+			this.url = url;
+		}
+
+		public void setExplanation(String explanation) {
+			this.explanation = explanation;
+		}
+
+			
+		public Exercise_Category(String description, String url, String explanation) {
+			super();
+			this.description = description;
+			this.url = url;
+			this.explanation = explanation;
+		}
+
 		public Exercise_Category() {
 		}
 

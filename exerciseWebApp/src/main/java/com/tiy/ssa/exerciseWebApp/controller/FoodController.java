@@ -31,9 +31,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tiy.ssa.exerciseWebApp.entity.Food;
 import com.tiy.ssa.exerciseWebApp.entity.Food_Category;
+import com.tiy.ssa.exerciseWebApp.entity.Food_Tracking;
 import com.tiy.ssa.exerciseWebApp.entity.Userinfo;
 import com.tiy.ssa.exerciseWebApp.service.FoodService;
 import com.tiy.ssa.exerciseWebApp.service.IFood_CategoryService;
+import com.tiy.ssa.exerciseWebApp.service.IFood_TrackingService;
 import com.tiy.ssa.exerciseWebApp.service.IFoodService;
 
 @Controller
@@ -46,6 +48,9 @@ public class FoodController {
 		
 		@Autowired
 		private IFood_CategoryService foodCategoryService;
+		
+		@Autowired
+		private IFood_TrackingService foodTrackingService;
   
 		@RequestMapping(value= "/food/{id}", method = RequestMethod.GET)
 		public ResponseEntity<Food> getFoodById(@PathVariable("id") Integer id)
@@ -74,12 +79,13 @@ public class FoodController {
 		
 		@RequestMapping(value= "/storeFood/", method = RequestMethod.POST)
 		@ResponseBody
-		public void storeFood(@RequestBody List<Food> food)
+		public void storeFood(@RequestBody List<Food_Tracking> foodTrack)
 		{
-			//System.out.println(day);
-			System.out.println(food.get(1).getDescription());
-			//add to database when ready
-			//foodService.storeFood(food);
+			System.out.println(foodTrack.get(0).getFood_desc());
+			for (Food_Tracking fdTk : foodTrack){
+				foodTrackingService.insertFoodTrack(fdTk);
+			}
+			
 		}
 		
 	    

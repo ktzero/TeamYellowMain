@@ -84,7 +84,8 @@ public class ExerciseController {
 //	    		System.out.println("First name = "+user.getFirstname());
 //	    		System.out.println("Username = "+user.getUsername());
 //	    		System.out.println("pwd = "+user.getPassword());
-	    		response = "User ID and password dont match/ user does not exist ";
+//	    		response = "User ID and password dont match/ user does not exist ";
+	    		response = "Login failed ";
 	    	}
 	    		
 	        return response;

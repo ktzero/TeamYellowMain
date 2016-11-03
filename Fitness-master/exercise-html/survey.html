@@ -1,0 +1,75 @@
+<div id="surveyPage" ng-controller="surveyCtrl">
+		<h1>Survey</h1>
+
+	<div class="form-group">
+
+		<label for="memberHeight">Height:</label>
+
+		<input class="form-control memberHeight" type="text" id="memberHeight" name="memberHeight" ng-model="ctrl.user.memberHeight" required placeholder="Height"/>
+
+		<span ng-show="myForm.uname.$error.required">This field is required</span>
+		 
+		<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+	</div>
+
+	<div class="form-group">
+		<label for="memberWeight">Weight:</label>
+
+		<input class="form-control memberWeight" type="number" id="memberWeight" name="memberWeight" ng-model="ctrl.user.memberWeight" required  placeholder="Weight"/>
+
+		<span ng-show="myForm.uname.$error.required">This field is required</span>
+		 
+		<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+	</div>
+
+
+	<div class="form-group">
+		<label for="memberAge">Age:</label>
+
+		<input class="form-control memberAge" type="number" id="memberAge" name="memberAge" ng-model="ctrl.user.memberAge" required  placeholder="Age"/>
+
+		<span ng-show="myForm.uname.$error.required">This field is required</span>
+		 
+		<span ng-show="myForm.uname.$error.$invalid">This field invalid</span>
+
+	</div>
+
+	<div class="form-group">
+
+	<label for="gender">Gender:</label>
+
+				   <select name="gender">
+					  <option value="genderEmpty"></option>
+					  <option value="Female">Female</option>
+					  <option value="Male">Male</option>
+
+					</select>
+
+	<label for="goal"> Goal:</label>
+
+				   <select name="goal" selected="intensity">
+					  <option value="1" selected>New to working out</option>
+					  <option value="2">Familiar with working out</option>
+					  <option value="3">Expert</option>
+					  
+
+					</select>
+					
+				Enter start date for this program:
+				<input type="text" b-datepicker ng-model="date" />
+				<button type="button" class="btn" data-toggle="datepicker"> <i class="icon-calendar"></i>
+				</button>
+	</div>
+
+	<div class="form-group">
+
+	<label>Comments:</label>
+
+	<input class="form-control goal" type="text" id="goal" name="goal"  placeholder="Optional" />
+			
+	</div>
+
+	<button type="submit" class="btn btn-default" ng-click="getRoutine(+intensity)">Submit</button>
+	 <a href="#/exerciseTracking/" ng-show="surveyDone" class="btn btn-info" role="button">Proceed</a>
+	</form>
+</div>

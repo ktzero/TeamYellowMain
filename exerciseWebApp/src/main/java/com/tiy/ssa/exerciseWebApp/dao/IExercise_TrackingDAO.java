@@ -15,4 +15,6 @@ public interface IExercise_TrackingDAO {
 	List<Exercise_Tracking> getWorkoutRoutineByUserByDay(String userid,String dayno);
 	
 	boolean deleteWorkoutRoutine(String userid);
+	
+	boolean deleteOneWorkout(String userid,String dayno,Integer exid);
 }

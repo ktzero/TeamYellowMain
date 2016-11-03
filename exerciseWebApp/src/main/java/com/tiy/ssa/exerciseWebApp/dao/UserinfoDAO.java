@@ -44,7 +44,14 @@ public class UserinfoDAO implements IUserinfoDAO {
 	@Override
 	public Userinfo getUserByUsername(String uname) {
 		List<Userinfo> user = (List<Userinfo>)hibernateTemplate.find(" from Userinfo where username = ?", uname);
-		return user.get(0);
+		Userinfo returnUser ;
+		if (user.isEmpty()){
+			returnUser = new Userinfo("Not found","not found","n/a","n/a");
+		}
+		else 
+			returnUser = user.get(0);
+		
+		return returnUser;
 	}
 
 }
