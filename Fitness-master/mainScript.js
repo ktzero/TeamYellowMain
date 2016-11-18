@@ -1,5 +1,5 @@
 
-var app = angular.module("MyApp", ["youtube-embed","ngRoute","ng-fusioncharts"]);
+var app = angular.module("MyApp", ["youtube-embed","ngRoute","ng-fusioncharts",'ngLoadingSpinner']);
 
 app.controller("mainCtrl", function($scope, $rootScope,$location, $http) {
 	
@@ -80,6 +80,7 @@ app.controller("mainCtrl", function($scope, $rootScope,$location, $http) {
 									console.log("data = ",$scope.records);
 										for (var desc in $scope.records){
 											$rootScope.surveyDone = true;
+											$rootScope.storeUserInfo2();
 											console.log("Exercise Names : ",$scope.records[desc].ex_name);
 											if($scope.records[desc].todays_date !== null){
 												$scope.records[desc].tracked = true;
@@ -208,15 +209,22 @@ app.run(function($rootScope,$location,$anchorScroll){
 		   sessionStorage.setItem("userName", username);
 			sessionStorage.setItem("userId", userid);
 			sessionStorage.setItem("loginflag", true);
+			
 		   $rootScope.userId = userid;
 		   $rootScope.userName = username;
 	   	  $rootScope.loggedInFlag = true;
 		  
 	}
+	
+	$rootScope.storeUserInfo2 = function(){
+		sessionStorage.setItem("surveyDone", $rootScope.surveyDone);
+	}
+	
 	 $rootScope.getUserInfo = function(){
 			$rootScope.userId = sessionStorage.userId;
 			$rootScope.userName = sessionStorage.userName;
 			$rootScope.loggedInFlag = (sessionStorage.loginflag == 'true');
+			$rootScope.surveyDone = (sessionStorage.surveyDone == 'true');
 	    console.log("$rootScope.userId =",$rootScope.userId);
 		console.log("$rootScope.userName =",$rootScope.userName);
 		console.log("$rootScope.loggedInFlag =",$rootScope.loggedInFlag);
@@ -230,6 +238,7 @@ app.run(function($rootScope,$location,$anchorScroll){
 		   sessionStorage.setItem("userName", "");
 		   sessionStorage.setItem("userId", "");
 		   sessionStorage.setItem("loginflag", false);
+		   sessionStorage.setItem("surveyDone", false);
 	}
 	
 	// register listener to watch route changes

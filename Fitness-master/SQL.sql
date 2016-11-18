@@ -13,23 +13,6 @@ routine_created boolean,
 caloriesPerDay int,
 PRIMARY KEY(id));
 
-drop table exercise_tracking;
-delete from exercise_tracking;
-create table exercise_tracking (
-	
-	id int primary key auto_increment,	
-	user_id varchar(30),
-	dayNo varchar(25),
-	exercise_id int,
-	numberOfSets int not null,
-	numberOfReps int,
-	timeInMins int,
-	todays_date date,
-	complete boolean,
-	foreign key (exercise_id)
-	  references exercise(id)
-		  
-	);
 
 
 drop table exercise_category;
@@ -55,9 +38,6 @@ INSERT exercise_category( description,url, explanation) VALUES('ARMS',"/images/A
 INSERT exercise_category( description,url, explanation) VALUES('CORE',"/images/Core.jpg",
 "The major muscles involved include the pelvic floor muscles, multifidus, transverse abdominis, rectus abdominis, internal and external obliques, erector spinae - particularly the longissimus thoracis, as well as the diaphragm. The minor core muscles involved include the glueteus maximus, latissimus dorsi, and trapezius. The function of the core is to stabilize the person's thorax and pelvis during dynamic movement, as well as to provide internal pressure in order to expel substances.");
 
-
-
-
 drop table exercise;
 delete from exercise;
 create table exercise (
@@ -71,48 +51,26 @@ create table exercise (
 	references exercise_category(id)
 
 	);
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('BenchPress',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('InclinePress',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=DbFgADa2PL8");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('DeclinePress',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=LfyQBUKR8SE");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PushUps',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=Eh00_rniF8E");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Dips',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=wjUmnZH528Y");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PullOver',"Works chest muscle",1,3,"https://www.youtube.com/watch?v=tpLnfSQJ0gg");
+	
+	
+drop table exercise_tracking;
 
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('FlatMachinePress',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=rT7DgCr-3pg");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('MachineInclinePress',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=DbFgADa2PL8");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('MachineDeclinePress',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=LfyQBUKR8SE");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('KneelDownPushUps',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=Eh00_rniF8E");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('AssistedDips',"Works chest muscle",1,2,"https://www.youtube.com/watch?v=wjUmnZH528Y");
+create table exercise_tracking (
+	
+	id int primary key auto_increment,	
+	user_id varchar(30),
+	dayNo varchar(25),
+	exercise_id int,
+	numberOfSets int not null,
+	numberOfReps int,
+	timeInMins int,
+	todays_date date,
+	complete boolean,
+	foreign key (exercise_id)
+	  references exercise(id)
+		  
+	);
 
-
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PullUps',"Works Back muscle",2,3,"https://www.youtube.com/watch?v=Ir8IrbYcM8w");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('WideGripPullDown',"Works Back muscle",2,3,"https://www.youtube.com/watch?v=Ad_WOMtfyc4");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('SeatedRows',"Works Back muscle",2,3,"https://www.youtube.com/watch?v=Ir8IrbYcM8w");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('T-BarRow',"Works Back muscle",2,2,"https://www.youtube.com/watch?v=Ad_WOMtfyc4");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Deadlift',"Works Back muscle",2,2,"https://www.youtube.com/watch?v=Ir8IrbYcM8w");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('DumbbellRow',"Works Back muscle",2,2,"https://www.youtube.com/watch?v=Ad_WOMtfyc4");
-
-
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Squats',"Works Legs muscle",3,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Lunges',"Works Legs muscle",3,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('StiffLegDeadlifts',"Works Legs muscle",3,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('LegPress',"Works Legs muscle",3,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('StandingCalfRaises',"Works Legs muscle",3,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Leg Curls',"Works Legs muscle",3,2,"");
-
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('BarbellCurl',"Works Arms muscle",4,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PressDown',"Works Arms muscle",4,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('DumbbellCurl',"Works Arms muscle",4,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('21 curls',"Works Arms muscle",4,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('PreacherCurls',"Works Arms muscle",4,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('TricepExtension',"Works Arms muscle",4,2,"");
-
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Planks',"Works Core muscle",5,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Crunches',"Works Core muscle",5,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('Situps',"Works Core muscle",5,3,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('WeightedCrunches',"Works Core muscle",5,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('LegRaises',"Works Core muscle",5,2,"");
-insert into exercise(exercise_name,exercise_desc,category_id,intensity,url) values('HangingKneeRaises',"Works Core muscle",5,2,"");
 
 
 drop table if exists food_category;
@@ -121,6 +79,7 @@ drop table if exists food_category;
 		id int primary key auto_increment,
 		description varchar(40)
 		);
+		
 drop table if exists food;
 
 create table food(
@@ -150,6 +109,8 @@ create table food_tracking (
 	calories int
 			  
 	);
+	
+drop table date_map;
 	
 create table date_map (
 	id int primary key auto_increment,

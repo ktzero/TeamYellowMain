@@ -57,13 +57,12 @@ public class Exercise_TrackingController {
 	private IDate_MapService date_mapService;
 	// Create workout routine for the user 
 	
-	  @RequestMapping(value="/dateMap/{userid}/{mm}/{dd}/{yyyy}/{intensity}", method = RequestMethod.POST)
+	  @RequestMapping(value="/dateMap/{userid}/{intensity}", method = RequestMethod.POST)
 	    @ResponseBody
 	    @CrossOrigin
-	public String createDateMap(@PathVariable("userid") String userid,@PathVariable("mm") String mm,@PathVariable("dd") String dd,
-			@PathVariable("yyyy") String yyyy,@PathVariable("intensity") Integer intensity){
+	public String createDateMap(@PathVariable("userid") String userid,@PathVariable("intensity") Integer intensity){
 		  String dayno = " "; 
-		  String date1 = mm+"/"+dd+"/"+yyyy;
+		  String date1 = "11/01/2016";
 		  int increment = 1;
 		 	HashMap<Integer,String> dayStr = new HashMap<Integer,String>();
 	    	dayStr.put(1, "One");
@@ -112,7 +111,7 @@ public class Exercise_TrackingController {
   
 	  public String createWorkoutRoutineForUser(String userid, Integer intensity, Date start_date) {
     	String response ="Failure";
-    	int noOfSets = 3;
+    	int noOfSets = 2;
     	int noOfReps = 10;
     	int caloriesPerDay = 1500;
     	String dayno = " "; 
@@ -132,20 +131,7 @@ public class Exercise_TrackingController {
     	}
     	
     	List<Exercise> exercise = exerciseService.getExerciseListByIntensity(intensity);
-    	switch(intensity){
-    	case 1: noOfSets = 2;
-    	        noOfReps = 10;
-    	        caloriesPerDay = 1500;
-    	        break;
-    	case 2: noOfSets = 3;
-    			noOfReps = 10;
-    			caloriesPerDay = 1800;
-    			break;
-    	case 3: noOfSets = 4;
-				noOfReps = 12;
-				caloriesPerDay = 2000;
-				break;
-    	}
+    	caloriesPerDay = 2000;
     
     	int week = 1;
     	//logic for creating routine for 4 weeks, 5 days a week workout routine 
@@ -154,6 +140,20 @@ public class Exercise_TrackingController {
     				  if (i>5 && i <=10) week =2;
 	    			  if (i>10 && i <=15) week =3;
 	    			  if (i>15 && i <=20) week =4;
+	    		     	switch(week){
+	    		     	case 1: noOfSets = 2;
+	    		     			noOfReps = 10;
+    		     				break;
+	    		    	case 2: noOfSets = 3;
+	    		    	        noOfReps = 8;
+	    		    	        break;
+	    		    	case 3: noOfSets = 3;
+	    		    			noOfReps = 10;
+	    		    			break;
+	    		    	case 4: noOfSets = 4;
+	    						noOfReps = 8;
+	    						break;
+	    		    	}
     				int j = i % 5;
     				if (j==0) { j+=5;}
 	    			 if(j == ex.getCategory_id() ) {
@@ -395,6 +395,7 @@ public class Exercise_TrackingController {
     	boolean response = false;
     	response = exrcise_TrackingService.deleteWorkoutRoutine(userid);
     	food_TrackingService.deleteFoodTrackByDay(userid, "Not Used");
+    	date_mapService.deleteDateMapByUserid(userid);
     	
     	Userinfo user = userinfoService.getUserByUsername(userid);
 		user.setStart_date(null);

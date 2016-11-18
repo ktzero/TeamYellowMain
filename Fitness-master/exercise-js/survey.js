@@ -2,19 +2,24 @@
 // Survey for user
 
 app.controller('surveyCtrl', function($scope,$rootScope, $http) {
-	$rootScope.getUserInfo();
+	
 	
 	console.log("desc = ",$rootScope.userId);	
 	$scope.getRoutine = function(intensity){
 		
-		var d = new Date($scope.date);
-		var dateVal = d.format("MM/DD/YYYY");
-	     
-		 console.log("Selected date =",dateVal);
+   // alert("Please give us a minute, while we work on your request!!!");
+	     $rootScope.surveyDone = false;
+		 $rootScope.storeUserInfo2();
+		 $rootScope.getUserInfo();
 		 
+		// console.log("Selected date =",dateVal);
+		 
+		
+		
 			$scope.intensity = intensity;
+			console.log("Intensity=",$scope.intensity);
 	//		$scope.getLink = "http://localhost:8080/exerciseTracking/" + $rootScope.userId + "/" + $scope.intensity;
-			$scope.getLink = "http://localhost:8080/dateMap/" + $rootScope.userId + "/" + dateVal + "/" + $scope.intensity;
+			$scope.getLink = "http://localhost:8080/dateMap/" + $rootScope.userId + "/" + $scope.intensity;
 				$http({
 				  url: $scope.getLink,
 				  method: 'POST',
@@ -23,7 +28,15 @@ app.controller('surveyCtrl', function($scope,$rootScope, $http) {
 					  return data;
 						}]
 					}).success(function(data){
-						$scope.surveyDone ="true";
+						if(data === "Failure"){
+							alert("Please select appropriate values and submit");
+							
+						}
+						if(data === "Success"){
+						//	alert("Your customized workout is ready, click Proceed to see it!!!");
+							$rootScope.surveyDone = true;
+							$rootScope.storeUserInfo2();
+						}
 					});
 									
 	}

@@ -70,7 +70,9 @@ app.controller('routineCtrl', function($scope, $http,$location, $rootScope) {
 						}]
 					}).success(function(data){
 						console.log("data=",data);
-						$scope.surveyDone ="false";
+						$rootScope.surveyDone = false;
+						$rootScope.storeUserInfo2();
+						
 						alert("Your workout routine deleted successfully, please fill out survey page to create a new one");
 						$location.path('/survey');
 					});

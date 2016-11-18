@@ -20,6 +20,7 @@ app.controller('addCtrl', function($scope, $rootScope,$http) {
 				  transformResponse: [function (data) {
 					  // Do whatever you want!
 					  console.log("data=",data);
+					  alert(data);
 					  return data;
 				  }]
 				});

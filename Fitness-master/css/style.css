@@ -1391,10 +1391,71 @@ License URI:http://www.gnu.org/licenses/gpl-2.0.html
 		color:black;
 		font-size:16px;
 	}
-	#routineTD.success{
-		background-color: #188B8B !important;
+	 #routineTD.success{
+		background-color: #FAD7A0 !important;
+		opacity: 0.9;
+		width:160px;
+		height: 110px;
+	}  
+/*	#4caf50  */
+	#routineTD2.success{
+		background-color: #FAD7A0 !important;
+		opacity: 0.9;
+		width:160px;
+		height: 50px;
+	}  
+	
+	/*  dark grey or black
+	.btn-success{
+		background-color: #323036 !important;
 		opacity: 0.9;
 		
+	} */
+	
+ /*  meroon 
+ .btn-success{
+		background-color: #8B3737 !important;
+		opacity: 0.9;
+		
+	} */
+	
+/* Gold */	
+	.btn-success{
+		background-color: #424949 !important;
+		opacity: 0.9;
+		color:white;
+	}
+	
+	
+	.btn-active{
+		background-color: #8B3737 !important;
+		opacity: 0.9;
+		color:white;
+		
+	}
+	
+	.progress-bar-warning{
+		background-color: #1ECF4D !important;
+		opacity: 0.9;
+		
+	}
+	
+	#routineHead{
+	background-color: #515750 !important;
+	color:white;
+	opacity: 0.8;
+	font-size:18px;
+	width:160px;
+	height: 50px;	
+	text-align:center;
+	}
+	
+	#routineHead2{
+	background-color: #515750 !important;
+	color:white;
+	opacity: 0.8;
+	font-size:18px;
+	
 	}
 	
 	#buttonTable.borderless th{
@@ -1410,7 +1471,7 @@ input[type=checkbox]
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */
   -moz-transform: scale(2); /* FF */
-  -webkit-transform: scale(2); /* Safari and Chrome */
+  -webkit-transform: scale(3); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
   padding: 10px;
 }
